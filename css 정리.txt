@@ -1,0 +1,152 @@
+1. 구글 웹 폰트 사이트에서 폰트 import 해오기
+@import url('https://fonts.googleaips.com/css?family=Poiret+One');
+
+2. 넘치는 요소는 보이지 않게 가리기
+overflow : hidden;
+
+3. 회전 중심점(원점/ 기준점)지정하기
+/* 중심축을 아래쪽으로 500만큼 이동 */
+transform-origin: center 500px;  
+
+4. 애니메이션 효과① : 해 뜨고 지는 효과
+(1) 단계별 키프레임 설정
+@keyframe sun {
+ 0% {
+  /* 투명도: 완전히 투명하게, 해 뜨는 효과 위해 9시 방향으로 설정 : -90deg
+  opacity: 0; transform:rotate(-90deg);
+}
+25% {
+/* 투명도 : 완전히 불투명하게(보이게) 
+  opacity: 1; transform:rotate(-30deg);
+}
+50% {
+ opacity: 1; transform: rotate(30deg);
+}
+75% {
+  opacity: 0; transform: rotate(90deg);
+}
+100% {
+ opacity: 0; transform: rotate(-90deg);
+}
+
+(2) 애니메이션 키프레임 불러오기
+section .sky .sun {
+ animation: sun linear 20s infinite;
+}
+
+/ -------------------------------------------------------------/
+애니메이션 효과② : 놀이기구 움직이기
+(1) 단계별 키 프레임 설정
+@keyframe rotation {
+ 0% {
+ transform: rotate(0deg);
+}
+100%{
+ transform: rotate(360deg);
+}
+
+(2) 애니메이션 키프레임 불러오기 
+section .town .circle {
+animation: rotation linear 20s infinite;
+}
+
+/ -------------------------------------------------------------/
+애니메이션 효과③ : 하늘 색 변경
+(1) 단계별 키 프레임 설정
+
+@keyframe sky {
+ 0% {
+ background-color: #b08fcc;
+ }
+25% {
+ background-color: #b1e1e2;
+ }
+50% {
+background-color: #fcd2e2;
+ }
+75% {
+ background-color: #636888;
+ }
+100% {
+ background-color: #b08fcc;
+ }
+}
+
+(2) 애니메이션 키 프레임 불러오기
+
+ body {
+  animation: sky linear 20s infinite;
+}
+
+/ -------------------------------------------------------------/
+애니메이션 효과④ : 사람과 구름을 오른쪽으로 이동시키기
+(1) 단계별 키 프레임 설정
+/* 사람들과 구름들이 왼쪽-> 오른쪽 끝으로 이동하여 사라지면
+다시 왼쪽부터 서서히 나타나도록 설정*/
+@keyframe flow {
+0% {
+  left: 0%; 
+  opacity : 0;
+ }
+10% {
+ opacity: 1;
+ }
+80% {
+ opacity: 1;
+ }
+100% {
+ left: 90%;
+ opacity: 0;
+ } 
+} 
+
+(2) 애니메이션 키 프레임 불러오기
+
+section .sky .cloud1 {
+ animation: flow linear 10s infinte;
+ }
+
+section .sky .cloud2 {
+ animation: flow linear 20s infinite;
+ }
+
+section .people .man {
+ animation: flow linear 7s infinite;
+}
+
+section .people .family {
+ animation: flow linear 20s infinite;
+ }
+}
+
+/ -------------------------------------------------------------/
+애니메이션 효과⑤ : 밤에 특정 요소를 숨기는 효과
+(1) 단계별 키 프레임 설정
+ 
+@keyframe day {
+ 0% {
+ opacity: 0;
+ }
+25% {
+ opacity: 1;
+ }
+50% { 
+ opacity: 1;
+}
+75% {
+ opacity: 0;
+ }
+100% {
+ opacity : 0;
+ }
+}
+
+(2) 애니메이션 키 프레임 불러오기
+
+section .town .day {
+ animation: day linear 20s infinite;
+}
+
+section .people {
+ animation: day linear 20s infinite;
+}
